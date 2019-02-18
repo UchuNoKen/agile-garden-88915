@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(5000);
+app.listen(PORT);
 
 // app represents underlying express server
 // get creates a new route handler

@@ -1,5 +1,8 @@
 // Import express w/require using CommonJS modules
 const express = require("express");
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20");
+
 // Create an express app by calling express function
 const app = express();
 

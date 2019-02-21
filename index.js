@@ -4,12 +4,10 @@ const mongoose = require("mongoose");
 const keys = require("./config/keys");
 require("./services/passport");
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 
 // Create an express app by calling express function
-const app = express(
-  "mongodb+srv://foobacca:<PASSWORD>@maily-rucmt.mongodb.net/test?retryWrites=true"
-);
+const app = express();
 
 require("./routes/authRoutes")(app);
 

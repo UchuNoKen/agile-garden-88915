@@ -2,7 +2,6 @@
 # dependencies
 /node_modules
 /.pnp
-/config
 .pnp.js
 
 # testing
@@ -24,4 +23,4 @@ yarn-error.log*
 
 log.txt
 notes.txt
-keys.js
+dev.js

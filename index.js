@@ -7,7 +7,9 @@ const keys = require("./config/keys");
 require("./models/User");
 require("./services/passport");
 
-mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
+mongoose.connect(keys.mongoURI).catch(error => {
+  console.log("Error connecting to DB:", error);
+});
 
 // Create an express app by calling express function
 const app = express();

@@ -29,6 +29,7 @@ passport.use(
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback"
     },
+    // create user record
     (accessToken, refreshToken, profile, done) => {
       // console.log("access token", accessToken);
       // console.log("refresh token", refreshToken);

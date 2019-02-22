@@ -28,7 +28,7 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback",
-      proxy: true
+      proxy: true // trust Heroku proxy
     },
     // create user record
     (accessToken, refreshToken, profile, done) => {

@@ -8,6 +8,16 @@ const keys = require("../config/keys");
 
 const User = mongoose.model("users");
 
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id).then(user => {
+    done(null, user);
+  });
+});
+
 //  tell passport to use new instance of GoogleStrategy
 //  passed object with ID and secret to new GoogleStrategy()
 //  passed third configuration option of callbackURL

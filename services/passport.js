@@ -31,23 +31,18 @@ passport.use(
       proxy: true // trust Heroku proxy
     },
     // create user record
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       // console.log("access token", accessToken);
       // console.log("refresh token", refreshToken);
 
       // returns a promise
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          // already a record with the profile Id
-          // console.log(existingUser);
-
-          // passport function
-          done(null, existingUser);
-        } else {
-          // don't have a user record with this ID, make a new one
-          new User({ googleId: profile.id }).save().then(user => done(null, user));
-        }
-      });
+      const existingUser = await User.findOne({ googleId: profile.id });
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+      // don't have a user record with this ID, make a new one
+      const user = await new User({ googleId: profile.id }).save();
+      done(null, user);
     }
   )
 );

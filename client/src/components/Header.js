@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 class Header extends Component {
   renderContent() {
+    console.log(this.props);
     switch (this.props.auth) {
       case null:
         return;
@@ -34,9 +35,7 @@ class Header extends Component {
 }
 
 function mapStateToProps({ auth }) {
-  return {
-    auth
-  };
+  return { auth };
 }
 
 export default connect(mapStateToProps)(Header);
